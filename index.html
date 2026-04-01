@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="body-div">
+      <h1>
+        Generate a<br />
+        <span>random password</span>
+      </h1>
+      <p>Never use an insecure password again.</p>
+      <button id="pass-generator-btn" onclick="randomPass()">
+        Generate passwords
+      </button>
+      <div id="password-boxes">
+        <button
+          class="password-container"
+          id="password-container-one"
+          type="button"
+        >
+          Tap to copy
+        </button>
+        <button
+          class="password-container"
+          id="password-container-two"
+          type="button"
+        >
+          Tap to copy
+        </button>
+      </div>
+      <p id="copy-status" aria-live="polite">
+        Generate a password, then tap either result to copy it.
+      </p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
