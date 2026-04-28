@@ -152,6 +152,7 @@ span {
   }
 
   #body-div {
+    text-align: center;
     border-radius: 22px;
     padding: 24px 20px;
   }
