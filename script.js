@@ -95,9 +95,9 @@ const characters = [
 const passwordLength = 15;
 const emptyStateText = "Tap to copy";
 
-const passContElOne = document.querySelector("#password-container-one");
-const passContElTwo = document.querySelector("#password-container-two");
-const copyStatusEl = document.querySelector("#copy-status");
+const passContElOne = document.querySelector(".password-container-one");
+const passContElTwo = document.querySelector(".password-container-two");
+const copyStatusEl = document.querySelector(".copy-status");
 const passwordBoxes = [passContElOne, passContElTwo];
 
 function setCopyStatus(message, isError = false) {
