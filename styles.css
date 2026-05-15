@@ -1,8 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
-
-/* Global Variables */
+/* Global Tokens */
 
 :root {
+  /* Shape */
+  --border-radius: 30px;
+
+  /* Spacing */
+  --space-xxs: 0.45rem;
+  --space-xs: 0.7rem;
+  --space-sm: 1rem;
+  --space-md: 1.2rem;
+
+  /* Sizing */
+  --heading-size: clamp(1.8rem, 8vw, 3.7rem);
+  --body-size: clamp(0.9rem, 4vw, 1.1rem);
+  --control-label-size: clamp(0.9rem, 5vw, 1.1rem);
+  --control-input-size: clamp(0.95rem, 3.8vw, 1.05rem);
+  --input-text-size: clamp(1rem, 5vw, 1.2rem);
+  --password-box-width: clamp(12rem, 70vw, 15rem);
+  --primary-button-width: clamp(12rem, 56vw, 15rem);
+  --length-input-width: 3.7rem;
+  --length-arrow-width: 1.55rem;
+  --length-arrow-height: 1.25rem;
+  --password-min-height: 56px;
+
+  /* Backgrounds */
   --page-bg: linear-gradient(
     160deg,
     rgb(226 213 191 / 1) 0%,
@@ -11,38 +32,51 @@
   );
   --card-bg: rgba(245, 238, 224, 0.86);
   --card-filter: blur(10px);
+  --surface-highlight: rgba(236, 224, 199, 0.52);
+
+  /* Borders */
   --card-border: rgba(76, 63, 44, 0.28);
-  --border-radius: 30px;
-  --card-box-shadow: 0 16px 34px rgba(58, 45, 26, 0.22);
+
+  /* Typography */
+  --font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
   --text-main: rgb(48 38 28 / 1);
   --text-muted: rgb(95 78 56 / 1);
+
+  /* Accent Colors */
   --accent: rgb(130 84 47 / 1);
   --accent-strong: rgb(92 58 32 / 1);
+  --focus-ring: rgb(162 117 70 / 1);
+
+  /* Button Colors */
   --button-text: rgb(255 255 255 / 1);
   --background-btn: rgb(74 95 58 / 1);
   --background-btn-strong: rgb(56 75 43 / 1);
+
+  /* State Colors */
   --status-error: rgb(133 45 32 / 1);
-  --focus-ring: rgb(162 117 70 / 1);
-  --surface-highlight: rgba(236, 224, 199, 0.52);
   --password-active-bg: rgb(45 61 34 / 1);
   --password-copied-border: rgb(162 117 70 / 1);
   --password-copied-bg: rgb(89 113 68 / 1);
-  --transition-elevate: transform 0.18s ease, box-shadow 0.18s ease;
-  --transition-elevate-fade:
-    transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
-  --transition-surface:
-    background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease,
-    box-shadow 0.18s ease;
+
+  /* Shadows */
+  --card-box-shadow: 0 16px 34px rgba(58, 45, 26, 0.22);
   --shadow-generate-base: 0 12px 24px rgba(92, 58, 32, 0.28);
   --shadow-generate-hover: 0 16px 30px rgba(92, 58, 32, 0.34);
   --shadow-generate-active: 0 8px 16px rgba(92, 58, 32, 0.24);
   --shadow-password-base: 0 8px 16px rgba(43, 57, 34, 0.28);
   --shadow-password-hover: 0 12px 22px rgba(43, 57, 34, 0.34);
   --shadow-password-active: 0 5px 10px rgba(43, 57, 34, 0.2);
-  --font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+
+  /* Transitions */
+  --transition-elevate: transform 0.18s ease, box-shadow 0.18s ease;
+  --transition-elevate-fade:
+    transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+  --transition-surface:
+    background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
-/* Reset and Global Styles */
+/* Base Styles */
 
 * {
   box-sizing: border-box;
@@ -50,7 +84,17 @@
   padding: 0;
 }
 
+@font-face {
+  /* Local variable font */
+  font-family: "Space Grotesk";
+  src: url("./font/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+
 html {
+  /* Center the card in the viewport */
   height: 100dvh;
   display: flex;
   justify-content: center;
@@ -59,6 +103,7 @@ html {
 }
 
 body {
+  /* Frosted glass card container */
   height: 80%;
   width: 90dvw;
   padding: 0 0.8rem;
@@ -78,15 +123,15 @@ body {
 
 h1 {
   margin-bottom: 0.5rem;
-  font-size: clamp(2rem, 5vw, 3.7rem);
+  font-size: var(--heading-size);
   line-height: 0.95;
   letter-spacing: -0.04em;
 }
 
 p {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.2rem;
   color: var(--text-muted);
-  font-size: clamp(1rem, 2.3vw, 1.1rem);
+  font-size: var(--body-size);
 }
 
 span {
@@ -94,23 +139,85 @@ span {
 }
 
 .length-control {
+  /* Label and input row for password length */
   margin-bottom: 1rem;
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-  color: var(--text-main);
-  font-weight: 600;
+  color: var(--text-muted);
+  font-size: var(--control-label-size);
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .length-input {
-  width: 5rem;
-  padding: 0.45rem 0.55rem;
+  width: var(--length-input-width);
+  padding: var(--space-xxs) var(--space-xxs);
+  border: none;
+  background: transparent;
+  text-align: center;
+  border-radius: 10px;
+  color: var(--accent);
+  font: inherit;
+  font-size: var(--input-text-size);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.length-input::-webkit-outer-spin-button,
+.length-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.length-input-wrap {
+  /* Wrapper gives the input and arrows one shared surface */
+  display: inline-flex;
+  align-items: stretch;
   border: 1px solid var(--card-border);
   border-radius: 14px;
   background: var(--surface-highlight);
+  overflow: hidden;
+}
+
+.length-spinner {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--card-border);
+}
+
+.length-arrow {
+  width: var(--length-arrow-width);
+  height: var(--length-arrow-height);
+  border: none;
+  background: rgba(130, 84, 47, 0.14);
+  color: var(--accent-strong);
+  font-size: 0.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.length-arrow:hover {
+  background: rgba(130, 84, 47, 0.25);
+}
+
+.length-arrow:active {
+  background: rgba(130, 84, 47, 0.34);
   color: var(--text-main);
-  font: inherit;
-  font-weight: 700;
+}
+
+.length-arrow:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -2px;
+}
+
+.length-arrow-up {
+  border-bottom: 1px solid var(--card-border);
 }
 
 .length-input:focus-visible {
@@ -120,15 +227,17 @@ span {
 
 .pass-generator-btn,
 .password-container {
+  /* Shared interactive controls */
   color: var(--button-text);
   font: inherit;
   cursor: pointer;
 }
 
 .pass-generator-btn {
-  margin-bottom: 2rem;
+  /* Primary call to action */
+  margin-bottom: 1.2rem;
   height: 3rem;
-  width: 12rem;
+  width: var(--primary-button-width);
   border: none;
   border-radius: var(--border-radius);
   background: linear-gradient(
@@ -136,6 +245,7 @@ span {
     var(--accent) 0%,
     var(--accent-strong) 100%
   );
+  font-size: var(--control-input-size);
   font-weight: 700;
   transition: var(--transition-elevate-fade);
   box-shadow: var(--shadow-generate-base);
@@ -153,16 +263,18 @@ span {
 }
 
 .password-boxes {
-  margin-bottom: 2rem;
-  width: 15rem;
+  /* Password output stack */
+  margin-bottom: 1.2rem;
+  width: var(--password-box-width);
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
 }
 
 .password-container {
+  /* Password result doubles as copy target */
   width: 100%;
-  min-height: 56px;
+  min-height: var(--password-min-height);
   border: 1px solid transparent;
   border-radius: var(--border-radius);
   background: var(--background-btn);
@@ -187,6 +299,7 @@ span {
 }
 
 .password-container.copied {
+  /* Quick copy confirmation */
   border-color: var(--password-copied-border);
   background: var(--password-copied-bg);
   box-shadow:
@@ -197,6 +310,7 @@ span {
 }
 
 @keyframes copiedPulse {
+  /* Brief pulse for copy feedback */
   0% {
     transform: scale(1);
     filter: brightness(1);
@@ -219,6 +333,7 @@ span {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Respect reduced motion */
   .password-container.copied {
     animation: none;
   }
@@ -230,6 +345,7 @@ span {
   outline-offset: 3px;
 }
 .copy-status {
+  /* Reserve room so status changes do not shift layout */
   margin-bottom: 0;
   min-height: 2.6em;
   line-height: 1.3;
@@ -240,12 +356,7 @@ span {
   color: var(--status-error);
 }
 
-/* @media (min-width: 640px) {
-  body {
-    padding: 36px;
-  }
+/* Responsive Breakpoint */
 
-  .password-boxes {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-} */
+@media (min-width: 430px) {
+}

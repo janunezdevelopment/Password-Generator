@@ -10,6 +10,24 @@ function copyPasswordFallback(text) {
   document.body.removeChild(tempInput);
 }
 
+function adjustPasswordLength(step) {
+  const passwordLengthInputEl = document.querySelector("#password-length");
+
+  if (!passwordLengthInputEl) {
+    return;
+  }
+
+  const min = Number(passwordLengthInputEl.min);
+  const max = Number(passwordLengthInputEl.max);
+  const currentValue = Number(passwordLengthInputEl.value);
+  const safeCurrentValue = Number.isFinite(currentValue)
+    ? currentValue
+    : Number(passwordLengthInputEl.defaultValue);
+  const nextValue = Math.min(max, Math.max(min, safeCurrentValue + step));
+
+  passwordLengthInputEl.value = String(nextValue);
+}
+
 async function copyPassword(button) {
   const password = button.textContent.trim();
 
@@ -65,6 +83,19 @@ window.passwordApp.passwordBoxes.forEach((button) => {
     copyPassword(button);
   });
 });
+
+const increaseLengthButtonEl = document.querySelector(".length-arrow-up");
+const decreaseLengthButtonEl = document.querySelector(".length-arrow-down");
+
+if (increaseLengthButtonEl && decreaseLengthButtonEl) {
+  increaseLengthButtonEl.addEventListener("click", () => {
+    adjustPasswordLength(1);
+  });
+
+  decreaseLengthButtonEl.addEventListener("click", () => {
+    adjustPasswordLength(-1);
+  });
+}
 
 window.randomPass = randomPass;
 window.passwordApp.loadCharacters();

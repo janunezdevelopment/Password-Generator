@@ -14,14 +14,33 @@
     <p>Never use an insecure password again.</p>
     <label class="length-control" for="password-length">
       Password length
-      <input
-        id="password-length"
-        class="length-input"
-        type="number"
-        min="4"
-        max="40"
-        value="10"
-      />
+      <div class="length-input-wrap">
+        <input
+          id="password-length"
+          class="length-input"
+          type="number"
+          min="4"
+          max="40"
+          step="1"
+          value="10"
+        />
+        <div class="length-spinner" aria-hidden="true">
+          <button
+            type="button"
+            class="length-arrow length-arrow-up"
+            aria-label="Increase password length"
+          >
+            ▲
+          </button>
+          <button
+            type="button"
+            class="length-arrow length-arrow-down"
+            aria-label="Decrease password length"
+          >
+            ▼
+          </button>
+        </div>
+      </div>
     </label>
     <button class="pass-generator-btn" onclick="randomPass()">
       Generate passwords
