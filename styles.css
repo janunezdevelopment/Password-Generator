@@ -93,6 +93,31 @@ span {
   color: var(--accent);
 }
 
+.length-control {
+  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.length-input {
+  width: 5rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  background: var(--surface-highlight);
+  color: var(--text-main);
+  font: inherit;
+  font-weight: 700;
+}
+
+.length-input:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
 .pass-generator-btn,
 .password-container {
   color: var(--button-text);

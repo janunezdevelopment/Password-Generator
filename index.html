@@ -12,20 +12,32 @@
       <span>random password</span>
     </h1>
     <p>Never use an insecure password again.</p>
+    <label class="length-control" for="password-length">
+      Password length
+      <input
+        id="password-length"
+        class="length-input"
+        type="number"
+        min="4"
+        max="40"
+        value="10"
+      />
+    </label>
     <button class="pass-generator-btn" onclick="randomPass()">
       Generate passwords
     </button>
     <div class="password-boxes">
       <button class="password-container password-container-one" type="button">
-        Tap to copy
+        Click to copy
       </button>
       <button class="password-container password-container-two" type="button">
-        Tap to copy
+        Click to copy
       </button>
     </div>
     <p class="copy-status" aria-live="polite">
       Generate a password, then tap either result to copy it.
     </p>
     <script src="script.js"></script>
+    <script src="handler.js"></script>
   </body>
 </html>
