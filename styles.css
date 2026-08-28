@@ -11,13 +11,12 @@
   --space-md: 1.2rem;
 
   /* Sizing */
-  --heading-size: clamp(1.8rem, 8vw, 3.7rem);
-  --body-size: clamp(0.9rem, 4vw, 1.1rem);
-  --control-label-size: clamp(0.9rem, 5vw, 1.1rem);
-  --control-input-size: clamp(0.95rem, 3.8vw, 1.05rem);
+  --heading-text-size: clamp(1.8rem, 8vw, 3.7rem);
+  --subheader-size: clamp(0.9rem, 4vw, 1.1rem);
+  --label-input-text-size: clamp(0.9rem, 4.5vw, 1.1rem);
   --input-text-size: clamp(1rem, 5vw, 1.2rem);
-  --password-box-width: clamp(12rem, 70vw, 15rem);
-  --primary-button-width: clamp(12rem, 56vw, 15rem);
+  --generate-passwords-button-width: clamp(12rem, 55vw, 15rem);
+  --password-box-width: clamp(15rem, 70vw, 20rem);
   --length-input-width: 3.7rem;
   --length-arrow-width: 1.55rem;
   --length-arrow-height: 1.25rem;
@@ -123,7 +122,7 @@ body {
 
 h1 {
   margin-bottom: 0.5rem;
-  font-size: var(--heading-size);
+  font-size: var(--heading-text-size);
   line-height: 0.95;
   letter-spacing: -0.04em;
 }
@@ -131,7 +130,7 @@ h1 {
 p {
   margin-bottom: 1.2rem;
   color: var(--text-muted);
-  font-size: var(--body-size);
+  font-size: var(--subheader-size);
 }
 
 span {
@@ -145,7 +144,7 @@ span {
   align-items: center;
   gap: 0.7rem;
   color: var(--text-muted);
-  font-size: var(--control-label-size);
+  font-size: var(--label-input-text-size);
   font-weight: 500;
   letter-spacing: 0.02em;
 }
@@ -159,7 +158,7 @@ span {
   border-radius: 10px;
   color: var(--accent);
   font: inherit;
-  font-size: var(--input-text-size);
+  font-size: var(--label-input-text-size);
   font-weight: 700;
   letter-spacing: 0.03em;
   appearance: textfield;
@@ -237,7 +236,7 @@ span {
   /* Primary call to action */
   margin-bottom: 1.2rem;
   height: 3rem;
-  width: var(--primary-button-width);
+  width: var(--generate-passwords-button-width);
   border: none;
   border-radius: var(--border-radius);
   background: linear-gradient(
@@ -349,7 +348,7 @@ span {
   margin-bottom: 0;
   min-height: 2.6em;
   line-height: 1.3;
-  font-size: 0.95rem;
+  font-size: var(--body-size);
 }
 
 .copy-status.error {
